@@ -1,0 +1,124 @@
+@Metadata.layer: #CORE
+
+@UI:{
+    headerInfo:{
+        typeName: '대량 전표 생성 프로그램',
+        typeNamePlural: '전표 목록',
+        title: { type : #STANDARD, value: 'RequestId' },
+        description: { type: #STANDARD, label: 'Pick-up Process' }
+    },
+    presentationVariant: [{
+        sortOrder: [{ by: 'Createdat', direction: #DESC }] ,
+        visualizations: [{
+            type: #AS_LINEITEM
+        }]
+    }]
+}
+annotate view ZC_FI_MASS_JOURNALENTRY_ITEM with
+{
+
+  @UI: { lineItem:       [ { position: 140 } ],
+         identification: [ { position: 140 } ],
+         selectionField: [ { position: 140 } ]  }
+  ItemUuid;
+
+  @UI: { lineItem:       [ { position: 140 } ],
+         identification: [ { position: 140 } ],
+         selectionField: [ { position: 140 } ]  }
+  HeaderUuid;
+
+  @UI: { lineItem:       [ { position: 140 } ],
+         identification: [ { position: 140 } ],
+         selectionField: [ { position: 140 } ]  }
+  RequestId;
+
+  @UI: { lineItem:       [ { position: 140 } ],
+         identification: [ { position: 140 } ],
+         selectionField: [ { position: 140 } ]  }
+  Acctype;
+
+  @UI: { lineItem:       [ { position: 140 } ],
+         identification: [ { position: 140 } ],
+         selectionField: [ { position: 140 } ]  }
+  Glaccount;
+
+  @UI: { lineItem:       [ { position: 140 } ],
+         identification: [ { position: 140 } ],
+         selectionField: [ { position: 140 } ]  }
+  Debtor;
+
+  @UI: { lineItem:       [ { position: 140 } ],
+         identification: [ { position: 140 } ],
+         selectionField: [ { position: 140 } ]  }
+  Creditor;
+
+  @UI: { lineItem:       [ { position: 140 } ],
+         identification: [ { position: 140 } ],
+         selectionField: [ { position: 140 } ]  }
+  Altvrecnclnaccts;
+
+  @UI: { lineItem:       [ { position: 140 } ],
+         identification: [ { position: 140 } ],
+         selectionField: [ { position: 140 } ]  }
+  Assignmentreference;
+
+  @UI: { lineItem:       [ { position: 140 } ],
+         identification: [ { position: 140 } ],
+         selectionField: [ { position: 140 } ]  }
+  Valuedate;
+
+  @UI: { lineItem:       [ { position: 140 } ],
+         identification: [ { position: 140 } ],
+         selectionField: [ { position: 140 } ]  }
+  Businessplace;
+
+  @UI: { lineItem:       [ { position: 140 } ],
+         identification: [ { position: 140 } ],
+         selectionField: [ { position: 140 } ]  }
+  Documentitemtext;
+
+  @UI: { lineItem:       [ { position: 140 } ],
+         identification: [ { position: 140 } ],
+         selectionField: [ { position: 140 } ]  }
+  Debitcreditcode;
+
+  @UI: { lineItem:       [ { position: 140 } ],
+         identification: [ { position: 140 } ],
+         selectionField: [ { position: 140 } ]  }
+  Costcenter;
+
+  @UI: { lineItem:       [ { position: 140 } ],
+         identification: [ { position: 140 } ],
+         selectionField: [ { position: 140 } ]  }
+  Amountintransactioncurrency;
+
+  @UI: { lineItem:       [ { position: 140 } ],
+         identification: [ { position: 140 } ],
+         selectionField: [ { position: 140 } ]  }
+  Taxbaseamountintranscrcy;
+
+  @UI: { lineItem:       [ { position: 140 } ],
+         identification: [ { position: 140 } ],
+         selectionField: [ { position: 140 } ]  }
+  Taxcode;
+
+  @UI: { lineItem:       [ { position: 140 } ],
+         identification: [ { position: 140 } ],
+         selectionField: [ { position: 140 } ]  }
+  Createdby;
+
+  @UI: { lineItem:       [ { position: 140 } ],
+         identification: [ { position: 140 } ],
+         selectionField: [ { position: 140 } ]  }
+  Createdat;
+
+  @UI: { lineItem:       [ { position: 140 } ],
+         identification: [ { position: 140 } ],
+         selectionField: [ { position: 140 } ]  }
+  Lastchangedby;
+
+  @UI: { lineItem:       [ { position: 140 } ],
+         identification: [ { position: 140 } ],
+         selectionField: [ { position: 140 } ]  }
+  Lastchangedat;
+}

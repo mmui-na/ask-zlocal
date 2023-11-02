@@ -1,0 +1,105 @@
+@Metadata.layer: #CORE
+
+@UI:{
+    headerInfo:{
+        typeName: '대량 전표 생성 프로그램',
+        typeNamePlural: '전표 목록',
+        title: { type : #STANDARD, value: 'RequestId' },
+        description: { type: #STANDARD, label: 'Pick-up Process' }
+    },
+    presentationVariant: [{
+        sortOrder: [{ by: 'Createdat', direction: #DESC }] ,
+        visualizations: [{
+            type: #AS_LINEITEM
+        }]
+    }]
+}
+annotate view ZC_FI_MASS_JOURNALENTRY with
+{
+
+  @EndUserText.label: '상태'
+  @UI: { lineItem: [ { position: 10, criticality: 'statusCriticality', criticalityRepresentation: #ONLY_ICON, cssDefault.width: '3em' } ] }
+  HeaderUuid;
+
+  @EndUserText.label: '구분'
+  @UI: { lineItem:       [ { position: 20, type: #FOR_ACTION, dataAction: 'btn_journal_entry', label: '전표생성', invocationGrouping: #CHANGE_SET } ],
+         identification: [ { position: 20 } ],
+         selectionField: [ { position: 20 } ]  }
+  RequestId;
+
+  @EndUserText.label: '회사코드'
+  @UI: { lineItem:       [ { position: 30 } ],
+         identification: [ { position: 30 } ],
+         selectionField: [ { position: 30 } ]  }
+  @Consumption: { valueHelpDefinition : [{ entity: {  name: 'I_CompanyCode', element : 'CompanyCode' },
+                                           useForValidation: true }]}
+  Companycode;
+
+  @EndUserText.label: '전표유형'
+  @UI: { lineItem:       [ { position: 40 } ],
+         identification: [ { position: 40 } ],
+         selectionField: [ { position: 40 } ]  }
+  @Consumption: { valueHelpDefinition : [{ entity: {  name: 'I_AccountingDocumentType', element : 'AccountingDocumentType' },
+                                           useForValidation: true }]}
+  Accountingdocumenttype;
+
+  @EndUserText.label: '분개일(증빙일)'
+  @UI: { lineItem:       [ { position: 50 } ],
+         identification: [ { position: 50 } ],
+         selectionField: [ { position: 50 } ]  }
+  @Consumption: { filter: { selectionType: #INTERVAL } }
+  Documentdate;
+
+  @EndUserText.label: '전기일'
+  @UI: { lineItem:       [ { position: 60 } ],
+         identification: [ { position: 60 } ],
+         selectionField: [ { position: 60 } ]  }
+  @Consumption: { filter: { selectionType: #INTERVAL } }
+  Postingdate;
+
+  @EndUserText.label: '헤더텍스트'
+  @UI: { lineItem:       [ { position: 70 } ],
+         identification: [ { position: 70 } ] }
+  Documentheadertext;
+
+  @EndUserText.label: '참조번호'
+  @UI: { lineItem:       [ { position: 80 } ],
+         identification: [ { position: 80 } ],
+         selectionField: [ { position: 80 } ]  }
+  Documentreferenceid;
+
+  @EndUserText.label: '전표번호'
+  @Consumption.semanticObject: 'AccountingDocument'
+  @UI: { lineItem:       [ { position: 90, importance: #HIGH, type: #WITH_NAVIGATION_PATH, targetElement: '_JournalEntry', cssDefault.width: '6em' } ],
+         identification: [ { position: 90 } ],
+         selectionField: [ { position: 90 } ]  }
+//  @Consumption: { valueHelpDefinition : [{ entity: {  name: 'I_JOURNALENTRYTP', element : 'AccountingDocument' },
+//                                           useForValidation: true }]}
+  Accountingdocument;
+
+  @EndUserText.label: '에러메시지'
+  @UI: { lineItem:       [ { position: 100, criticality: 'statusCriticality', criticalityRepresentation: #WITHOUT_ICON } ],
+         identification: [ { position: 100 } ],
+         selectionField: [ { position: 100 } ]  }
+  Errmsg;
+
+  @EndUserText.label: '생성자'
+  @UI: { lineItem:       [ { position: 110 } ],
+         identification: [ { position: 110 } ] }
+  Createdby;
+
+  @EndUserText.label: '생성일'
+  @UI: { lineItem:       [ { position: 120 } ],
+         identification: [ { position: 120 } ]  }
+  Createdat;
+
+  @EndUserText.label: '최종수정자'
+  @UI: { lineItem:       [ { position: 130 } ],
+         identification: [ { position: 130 } ] }
+  Lastchangedby;
+
+  @EndUserText.label: '최종수정일'
+  @UI: { lineItem:       [ { position: 140 } ],
+         identification: [ { position: 140 } ]  }
+  Lastchangedat;
+}

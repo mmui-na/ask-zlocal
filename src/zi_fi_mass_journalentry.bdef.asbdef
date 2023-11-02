@@ -1,0 +1,38 @@
+managed implementation in class zbp_i_fi_mass_journalentry unique;
+strict ( 1 );
+
+define behavior for zi_fi_mass_journalentry //alias <alias_name>
+persistent table ztb_fi_je_head
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+
+  // uuid readonly field고, 자동으로 numbering 됨.
+  field ( numbering : managed, readonly ) HeaderUuid;
+
+  create;
+  update;
+  delete;
+  association _Item { create; }
+
+  //  create_entry : 전표생성
+  action ( features : instance ) btn_journal_entry;
+
+}
+
+define behavior for zi_fi_mass_journalentry_item //alias <alias_name>
+persistent table ztb_fi_je_item
+lock dependent by _Header
+authorization dependent by _Header
+//etag master <field_name>
+{
+
+  field ( numbering : managed, readonly ) ItemUuid;
+
+  update;
+  delete;
+
+  field ( readonly ) HeaderUuid;
+  association _Header;
+}

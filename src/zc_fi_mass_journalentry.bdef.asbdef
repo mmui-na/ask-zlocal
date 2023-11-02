@@ -1,0 +1,19 @@
+projection;
+strict ( 1 );
+
+define behavior for ZC_FI_MASS_JOURNALENTRY //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use action btn_journal_entry;
+
+  use association _Item { create; }
+}
+
+define behavior for ZC_FI_MASS_JOURNALENTRY_ITEM //alias <alias_name>
+{
+  use update;
+
+  use association _Header;
+}

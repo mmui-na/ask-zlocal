@@ -1,0 +1,5 @@
+@EndUserText.label: 'MASS_JOURNALENTRY Service Definition'
+define service ZUI_FI_MASS_JOURNALENTRY {
+  expose ZC_FI_MASS_JOURNALENTRY;
+  expose ZC_FI_MASS_JOURNALENTRY_ITEM;
+}
